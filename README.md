@@ -50,3 +50,32 @@ Follow these steps to run the agent locally.
 ```bash
 git clone [https://github.com/Antheron23/Autonomous-Deep-Research-Agent.git](https://github.com/Antheron23/Autonomous-Deep-Research-Agent.git)
 cd Autonomous-Deep-Research-Agent
+
+2. Install Dependencies
+Bash
+
+pip install -r requirements.txt
+3. Configure API Keys
+This project requires API keys for the LLM and the Search Tool.
+
+Create a file named .env in the root folder.
+
+Add your keys (Get them for free at console.groq.com and tavily.com):
+
+Code snippet
+
+GROQ_API_KEY=gsk_your_groq_key_here
+TAVILY_API_KEY=tvly-your_tavily_key_here
+4. Run the Application
+Bash
+
+streamlit run app.py
+🧠 Architecture Flow
+Code snippet
+
+graph TD
+    A[Start] --> B(Agent Node / Llama 3)
+    B --> C{Decide: Tool or Answer?}
+    C -- Needs Info --> D[Tool Node / Tavily Search]
+    D --> B
+    C -- Has Answer --> E[Final Response]
